@@ -9,13 +9,13 @@
 				            <div class="at_block">
 				                <article class="{{post_class}}">
 				                    <div class="at_post_header">
-				                        <h2 class="at_post_title">{{{title}}}</h2>
+				                        <h2 class="at_post_title" itemprop="name headline">{{{title}}}</h2>
 				                    </div>
 				                    <div class="at_post_meta">
 				                        <span class="at_featured_post"><span class="fa fa-bookmark"></span> <span>Featured</span></span>
-				                        <span class="at_post_author"><span class="fa fa-user"></span> {{author}}</span>
-				                        <time class="at_post_time" datetime="{{date format='YYYY-MM-DD'}}"><span class="fa fa-calendar"></span> {{date format="DD MMM YYYY"}}</time>
-				                        <span class="at_post_tags">{{#if tags}}<span class="fa fa-tags"></span>{{/if}} {{tags}}</span>
+				                        <span class="at_post_author" itemscope itemtype="http://schema.org/Person" itemprop="author name"><span class="fa fa-user"></span> {{author}}</span>
+				                        <time class="at_post_time" itemprop="datePublished" datetime="{{date format='YYYY-MM-DD'}}"><span class="fa fa-calendar"></span> {{date format="DD MMM YYYY"}}</time>
+				                        <span class="at_post_tags">{{#if tags}}<span class="fa fa-tags"></span>{{/if}}<meta itemprop="keywords" content="{{tags}}">{{tags}}</span>
 				                    </div>
 					                <div class="at_post_share">
 					                    <h6 class="at_post_share_title">Share this post</h6>
