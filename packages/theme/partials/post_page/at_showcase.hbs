@@ -17,21 +17,6 @@
 				                        <time class="at_post_time" itemprop="datePublished" datetime="{{date format='YYYY-MM-DD'}}"><span class="fa fa-calendar"></span> {{date format="DD MMM YYYY"}}</time>
 				                        <span class="at_post_tags">{{#if tags}}<span class="fa fa-tags"></span>{{/if}}<meta itemprop="keywords" content="{{tags}}">{{tags}}</span>
 				                    </div>
-					                <div class="at_post_share">
-					                    <h6 class="at_post_share_title">Share this post</h6>
-					                    <a class="at_post_share_icon" href="http://twitter.com/share?text={{encode title}}&url={{url absolute="true"}}"
-					                        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-					                        <span class="fa fa-twitter-square"></span>
-					                    </a>
-					                    <a class="at_post_share_icon" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
-					                        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-					                        <span class="fa fa-facebook-square"></span>
-					                    </a>
-					                    <a class="at_post_share_icon" href="https://plus.google.com/share?url={{url absolute="true"}}"
-					                       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-					                        <span class="fa fa-google-plus-square"></span>
-					                    </a>
-					                </div>
 				                </article>
 				            </div>
 				            {{/post}}

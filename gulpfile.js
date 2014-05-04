@@ -51,21 +51,8 @@ gulp.task('zip', function() {
     return eventstream.concat (
         // Zip Theme Files
         gulp.src('**', {cwd: path.join(process.cwd(), 'packages/theme')})
-            .pipe(zip('ghostion.zip'))
-            .pipe(gulp.dest('dev/tmp/theme')),
-        // Zip Documentation Files
-        gulp.src('**', {cwd: path.join(process.cwd(), 'packages/documentation')})
-            .pipe(zip('ghostion_documentation.zip'))
-            .pipe(gulp.dest('dev/tmp/documentation')),
-        // Zip Sources Files
-        gulp.src('**', {cwd: path.join(process.cwd(), 'packages/sources')})
-            .pipe(zip('ghostion_sources.zip'))
-            .pipe(gulp.dest('dev/tmp/sources')),
-        // Zip DemoBuilder Files
-        gulp.src('**', {cwd: path.join(process.cwd(), 'packages/demobuilder')})
-            .pipe(zip('ghostion_demobuilder.zip'))
-            .pipe(gulp.dest('dev/tmp/demobuilder'))
-
+            .pipe(zip('the-ghost-who-blogs.zip'))
+            .pipe(gulp.dest('dev/tmp/theme'))
     );
 });
 
