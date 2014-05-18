@@ -1,5 +1,5 @@
 WebFontConfig = {
-  google: { families: [ ghostionConfig.google_fonts_family ] }
+  google: { families: [ ghostionConfig.google_base_fonts_family, ghostionConfig.google_title_fonts_family ] }
 };
 (function() {
   var wf = document.createElement('script');

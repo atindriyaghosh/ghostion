@@ -1,12 +1,12 @@
 {
-  "name": "ghostion",
+  "name": "the-ghost-who-blogs",
   "version": "1.0.0",
-  "description": "Free Ghost Theme Powered by Foundation 5 and Bourbon",
+  "description": "Ghost Theme Based On Ghostion",
   "license": "MIT",
   "author": {
-    "name": "AxianTheme",
-    "email": "support@axiantheme.com",
-    "url": "http://www.axiantheme.com"
+    "name": "Atindriya Ghosh",
+    "email": "atindriya@ghosm.me",
+    "url": "https://www.atindriyaghosh.com"
   },
   "devDependencies": {
     "gulp": "~3.5.0",

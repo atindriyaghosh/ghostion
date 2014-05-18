@@ -13,7 +13,6 @@
 h1, h2, h3, h4, h5, h6 {
 	color: darken($base_text_color, 10%);
 	font-family: $base_font_family;
-	font-weight: bold;
 }
 a {
 	color: $primary_color;
@@ -44,7 +43,6 @@ img {
 .at_logo_text {
 	color: $logo_text_color;
     font-size: 1.2rem;
-    font-weight: bold;
     line-height: 1;
     margin: 1rem 0;
     display: inline-block;
@@ -149,8 +147,9 @@ ul.off-canvas-list {
 	.at_post_title, .at_post_share_title {
 		color: #fff;
 		text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.3);
+		font-family: $title_font_family;
 	}
-	.at_title {
+	.at_title, .at_post_title {
 	    font-size: 4rem;
 		@media #{$small-only} {
 			font-size: 3rem;
