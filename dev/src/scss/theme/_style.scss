@@ -272,9 +272,9 @@ ul.off-canvas-list {
 //* Button
 //*-----------------------------------------
 .button {
-	background-color: $primary_color;
+	background-color: $home_page_post_color;
 	&:hover {
-		background-color: shade($primary_color, 10%);
+		background-color: shade($home_page_post_color, 30%);
 	}
 }
 

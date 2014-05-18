@@ -4,11 +4,11 @@
 //* Post
 //*-----------------------------------------
 .at_post_meta {
-	color: lighten($base_text_color, 70%);
+	color: $post_meta_color;
 	font-size: $base_font_size - 2;
 	margin-bottom: 1rem;
 	.post-template & {
-		color: fade-out($showcase_text_color, 0.5)
+		color: $post_meta_color, 0.5
 	}
 }
 .at_post_title {
@@ -24,6 +24,13 @@
 		line-height: 2.2rem;
 	}
 }
+.at_home_page_post_title {
+    color: $home_page_post_color;
+	@include transition(color 0.2s ease-in);
+	&:hover, &:focus {
+		color: shade($home_page_post_color, 30%);
+	}
+}
 .at_post_author, .at_post_time, .at_post_tags {
 	display: inline-block;
 	margin-right: 15px;
@@ -35,6 +42,7 @@
 	margin-right: 0;
 }
 .at_post_share_title {
+	color: $showcase_text_color;
 	text-transform: uppercase;
 	opacity: 0.5;
 }
@@ -48,7 +56,7 @@
 }
 .at_post_share_icon span {
 	font-size: 2rem;
-	margin: 0 3px;
+	margin: 0 10px;
 	color: $showcase_text_color;
 	text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.3);
 	opacity: 0.5;
@@ -60,13 +68,13 @@
 .at_author {
 	color: $primary_color;
 	background: #fff;
-    border-top:1px solid #000;
-	border-bottom:1px solid #000;
+    border-top:1px solid $table_border_color;
+	border-bottom:1px solid $table_border_color ;
     padding: 1rem;
     margin: 1rem auto;
 }
 .at_author_name h3 {
-	color: $primary_color;
+	color: $author_name_color;
 	font-weight: 500;
 }
 .at_author_bio p {
