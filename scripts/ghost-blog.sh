@@ -20,7 +20,7 @@ usage(){
     echo "1. $(tput setaf 6)./ghost-blog.sh -s$(tput sgr 0) or $(tput setaf 6)./ghost-blog.sh --start$(tput sgr 0)$(tput sgr 0) - Starts the blog"
     echo "2. $(tput setaf 6)./ghost-blog.sh -t$(tput sgr 0) or $(tput setaf 6)./ghost-blog.sh --terminate$(tput sgr 0)$(tput sgr 0) - Stops the blog"
 	echo "3. $(tput setaf 6)./ghost-blog.sh -r$(tput sgr 0) or $(tput setaf 6)./ghost-blog.sh --restart$(tput sgr 0)$(tput sgr 0) - Restarts the blog"
-	echo "4. $(tput setaf 6)./ghost-blog.sh -d <Artifact Path>$(tput sgr 0) or $(tput setaf 6)./ghost-blog.sh --deploy <Artifact Path>$(tput sgr 0)$(tput sgr 0) - Deploy the latest release"
+	echo "4. $(tput setaf 6)./ghost-blog.sh -d <Artifact Path> <Release Version>$(tput sgr 0) or $(tput setaf 6)./ghost-blog.sh --deploy <Artifact Path> <Release Version>$(tput sgr 0)$(tput sgr 0) - Deploy the latest release"
 }
 startup(){ 
 	echo "$(tput setaf 3)Starting The Blog ...$(tput sgr 0)"
@@ -44,8 +44,10 @@ restart(){
 deploy(){ 
 	shutdown
 	echo "$(tput setaf 3)Deploying Latest Release Artifacts ...$(tput sgr 0)"
-	cd /var/www/content/themes/the-ghost-who-blogs
-	sudo rm -rf *
+	cd /var/www/content/themes/
+	sudo rm -rf the-ghost-who-blogs-*
+	sudo mkdir the-ghost-who-blogs-$2
+	cd the-ghost-who-blogs-*
 	sudo unzip "$1"
 	cd /var/www
 	echo "$(tput setaf 2)Release Artifacts Deployed Successfully$(tput sgr 0)"
@@ -64,12 +66,12 @@ while [ "$1" != "" ]; do
 							exit
 							;;
 		"-d" | "--deploy"	)	
-							if ["$2" == ""]; 
+							if ["$2" == "" || "$3" == ""]; 
 							then
-								echo "$(tput setaf 1)Please pass release path and artifact path$(tput sgr 0)\n"
+								echo "$(tput setaf 1)Please pass artifact path and release version$(tput sgr 0)\n"
 								usage
 							else
-								deploy $2
+								deploy $2 $3
 							exit
 							;;	
 		"-h" | "--help"		)	usage

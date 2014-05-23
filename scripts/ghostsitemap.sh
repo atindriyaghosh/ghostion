@@ -6,7 +6,7 @@
 ##############################################
 
 ## Change URL
-url="ec2-54-86-31-201.compute-1.amazonaws.com"
+url="www.atindriyaghosh.com"
 webroot='/var/www/core/client/assets'
 path="${webroot}/sitemap.xml"
 user='root'	# web server user

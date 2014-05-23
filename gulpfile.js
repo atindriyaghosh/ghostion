@@ -9,7 +9,11 @@ var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
     notify      = require('gulp-notify'),
     clean       = require('gulp-clean'),
-    zip         = require('gulp-zip');
+    zip         = require('gulp-zip'),
+	args   		= require('yargs').argv;
+
+var releaseVersion = args.version;
+var artifactName = 'the-ghost-who-blogs-' + releaseVersion + '.zip';
 
 // Compile scss Files
 gulp.task('scss', function() {
@@ -51,7 +55,7 @@ gulp.task('zip', function() {
     return eventstream.concat (
         // Zip Theme Files
         gulp.src('**', {cwd: path.join(process.cwd(), 'packages/theme')})
-            .pipe(zip('the-ghost-who-blogs.zip'))
+            .pipe(zip(artifactName))
             .pipe(gulp.dest('dev/tmp/theme'))
     );
 });

@@ -190,42 +190,21 @@ ul.off-canvas-list {
 		padding: 0 1rem;
 	}
 	.at_icon_menu_item {
-		font-size: 0.85rem;
+		font-family: $title_font_family;
+		font-size: 1rem;
 		@media #{$small-only} {
 			margin: 0 5px;
 			font-size: 0.8rem;
 		}
+	}	
+	.fa-linkedin-square {
+		color : $linkedin_color;
 	}
-}
-#at_top_border {
-	color: $top_text_color;
-	background: $top_background_color;
-	.at_block {
-		padding: 0 1rem;
+	.fa-github-square {
+		color : $github_color;
 	}
-	.at_icon_menu_item {
-		font-size: 0.85rem;
-		@media #{$small-only} {
-			margin: 0 5px;
-			font-size: 0.8rem;
-		}
-	}
-}
-
-#at_top_border_share {
-	text-align:center;
-	color: darken($top_text_color, 20%);
-	background: $top_background_color;
-	padding: 0.5rem 0.5rem;
-	.at_block {
-		padding: 0 1rem;
-	}
-	.at_icon_menu_item {
-		font-size: 0.85rem;
-		@media #{$small-only} {
-			margin: 0 5px;
-			font-size: 0.8rem;
-		}
+	.fa-rss-square {
+		color : $rss_color;
 	}
 	
 }
