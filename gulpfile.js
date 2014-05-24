@@ -1,5 +1,6 @@
 // Load Gulp Plugins
-var gulp        = require('gulp'),
+var argv 		= require('yargs').argv,
+	gulp        = require('gulp'),
     eventstream = require('event-stream'),
     path        = require('path');
     sass        = require('gulp-ruby-sass'),
@@ -9,11 +10,7 @@ var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
     notify      = require('gulp-notify'),
     clean       = require('gulp-clean'),
-    zip         = require('gulp-zip'),
-	args   		= require('yargs').argv;
-
-var releaseVersion = args.version;
-var artifactName = 'the-ghost-who-blogs-' + releaseVersion + '.zip';
+    zip         = require('gulp-zip');
 
 // Compile scss Files
 gulp.task('scss', function() {
@@ -50,12 +47,22 @@ gulp.task('watch', function() {
     gulp.watch('dev/src/js/*.js', ['concat']);
 });
 
-// Zip Packages Files
-gulp.task('zip', function() {
+// Zip Build Packages Files
+gulp.task('zip_build', function() {
     return eventstream.concat (
         // Zip Theme Files
         gulp.src('**', {cwd: path.join(process.cwd(), 'packages/theme')})
-            .pipe(zip(artifactName))
+            .pipe(zip('the-ghost-who-blogs-' + argv.buildversion + '.zip'))
+            .pipe(gulp.dest('dev/tmp/theme'))
+    );
+});
+
+// Zip Release Packages Files
+gulp.task('zip_release', function() {
+    return eventstream.concat (
+        // Zip Theme Files
+        gulp.src('**', {cwd: path.join(process.cwd(), 'packages/theme')})
+            .pipe(zip('the-ghost-who-blogs-' + argv.releaseversion + '.zip'))
             .pipe(gulp.dest('dev/tmp/theme'))
     );
 });
@@ -66,14 +73,27 @@ gulp.task('clean_tmp', function() {
         .pipe(clean());
 });
 
-// Clean releases Files
+// Clean Build Files
+gulp.task('clean_builds', function() {
+    gulp.src('builds/**', {read: false})
+        .pipe(clean());
+});
+
+// Clean Releases Files
 gulp.task('clean_releases', function() {
     gulp.src('releases/**', {read: false})
         .pipe(clean());
 });
 
+// Move Zip Files to builds Folder
+gulp.task('move_zip_build', ['clean_builds'], function() {
+    gulp.src('dev/tmp/**/*.zip')
+        .pipe(gulp.dest('builds'))
+        .pipe(notify({message: 'All Files Built Successfully'}));
+});
+
 // Move Zip Files to releases Folder
-gulp.task('move_zip', ['clean_releases'], function() {
+gulp.task('move_zip_release', ['clean_releases'], function() {
     gulp.src('dev/tmp/**/*.zip')
         .pipe(gulp.dest('releases'))
         .pipe(notify({message: 'All Files Released Successfully'}));
@@ -84,7 +104,12 @@ gulp.task('develop', function() {
     gulp.start('scss', 'concat', 'watch');
 });
 
+// Main Task: Build
+gulp.task('build', ['zip_build'], function() {
+    gulp.start('move_zip_build', 'clean_tmp');
+});
+
 // Main Task: Release
-gulp.task('release', ['zip'], function() {
-    gulp.start('move_zip', 'clean_tmp');
+gulp.task('release', ['zip_release'], function() {
+    gulp.start('move_zip_release', 'clean_tmp');
 });

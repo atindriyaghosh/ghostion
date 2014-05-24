@@ -44,11 +44,19 @@ restart(){
 deploy(){ 
 	shutdown
 	echo "$(tput setaf 3)Deploying Latest Release Artifacts ...$(tput sgr 0)"
-	cd /var/www/content/themes/
-	sudo rm -rf the-ghost-who-blogs-*
-	sudo mkdir the-ghost-who-blogs-$2
-	cd the-ghost-who-blogs-*
+	dir_path="/var/www/content/themes/"
+	dir_name="the-ghost-who-blogs-$2"
+	version="$2"
+	date=`date +"%Y-%m-%d %T"`
+	echo "$(tput setaf 3)Deployed Artifact Location = $dir_name$(tput sgr 0)"
+	cd $dir_path
+	sudo rm -rf the-ghost-who-blogs*
+	sudo mkdir $dir_name
+	cd $dir_name
 	sudo unzip "$1"
+	release_json="{\"artifactName\":\"The-Ghost-Who-Blogs\",\"artifactVersion\":\"$version\",\"releaseDate\":\"$date\"}"
+	echo "$(tput setaf 3)Release Details$(tput sgr 0)"
+	echo $release_json | python -mjson.tool | sudo tee RELEASE_INFO.json
 	cd /var/www
 	echo "$(tput setaf 2)Release Artifacts Deployed Successfully$(tput sgr 0)"
 	startup
@@ -72,8 +80,9 @@ while [ "$1" != "" ]; do
 								usage
 							else
 								deploy $2 $3
+							fi
 							exit
-							;;	
+							;;
 		"-h" | "--help"		)	usage
 							exit
 							;;
