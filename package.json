@@ -1,11 +1,11 @@
 {
   "name": "the-ghost-who-blogs",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Ghost Theme Based On Ghostion",
   "license": "MIT",
   "author": {
     "name": "Atindriya Ghosh",
-    "email": "atindriya@ghosm.me",
+    "email": "atindriya@ghosh.me",
     "url": "https://www.atindriyaghosh.com"
   },
   "devDependencies": {
