@@ -197,10 +197,16 @@ ul.off-canvas-list {
 			font-size: 0.8rem;
 		}
 	}	
+	.fa-twitter-square {
+		color : $twitter_color;
+	}
+	.fa-google-plus-square {
+		color : $google_plus_color;
+	}
 	.fa-linkedin-square {
 		color : $linkedin_color;
 	}
-	.fa-github-square {
+	.fa-github {
 		color : $github_color;
 	}
 	.fa-rss-square {

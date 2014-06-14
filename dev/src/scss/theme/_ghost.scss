@@ -89,6 +89,42 @@
 .at_author_bio p {
 	color: #000;
 }
+.at_author_follow {
+	padding: 1rem;
+	margin: 1rem auto;
+}
+.at_author_follow_icon span {
+	font-size: 2rem;
+	margin: 0 10px;
+}
+.at_author_follow_icon_twitter {
+	color : $twitter_color;
+	@include transition(color 0.2s ease-in);
+	&:hover, &:focus {
+		color: shade($twitter_color, 15%);
+	}
+}
+.at_author_follow_icon_google_plus {
+	color : $google_plus_color;
+	@include transition(color 0.2s ease-in);
+	&:hover, &:focus {
+		color: shade($google_plus_color, 15%);
+	}
+}
+.at_author_follow_icon_linkedin {
+	color : $linkedin_color;
+	@include transition(color 0.2s ease-in);
+	&:hover, &:focus {
+		color: shade($linkedin_color, 15%);
+	}
+}
+.at_author_follow_icon_github {
+	color : $github_color;
+	@include transition(color 0.2s ease-in);
+	&:hover, &:focus {
+		color: shade($github_color, 15%);
+	}
+}
 .at_author_image {
 	img {
 		background: #fff;
