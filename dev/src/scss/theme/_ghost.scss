@@ -40,6 +40,15 @@
 }
 .at_post_tags {
 	margin-right: 0;
+	a {
+		color: $post_keywords_color;
+		@include transition(color 0.2s ease-in);
+		@include transition(text-decoration 0.2s ease-in);
+		&:hover, &:focus {
+			color: shade($post_keywords_color, 15%);
+			text-decoration: underline;
+		}
+	}
 }
 .at_post_share_title {
 	color: $showcase_text_color;
