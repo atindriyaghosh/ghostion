@@ -162,9 +162,6 @@ ul.off-canvas-list {
 			font-size: 1.2rem;
 		}
 	}
-	.at_version {
-		color: fade-out($showcase_text_color, 0.5);
-	}
 }
 .at_blog_cover {
 	background-size: cover;
@@ -200,14 +197,14 @@ ul.off-canvas-list {
 	.fa-twitter-square {
 		color : $twitter_color;
 	}
-	.fa-google-plus-square {
+	.fa-google-plus {
 		color : $google_plus_color;
 	}
 	.fa-linkedin-square {
 		color : $linkedin_color;
 	}
 	.fa-github {
-		color : $github_color;
+		color : $github_primary_color;
 	}
 	.fa-rss-square {
 		color : $rss_color;
