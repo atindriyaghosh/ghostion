@@ -10,7 +10,8 @@ var argv 		= require('yargs').argv,
     concat      = require('gulp-concat'),
     notify      = require('gulp-notify'),
     clean       = require('gulp-clean'),
-    zip         = require('gulp-zip');
+    zip         = require('gulp-zip'),
+	bump 		= require('gulp-bump');
 
 // Compile scss Files
 gulp.task('scss', function() {
@@ -67,6 +68,22 @@ gulp.task('zip_release', function() {
     );
 });
 
+// Bump up build version
+gulp.task('bump-buildversion', function(){
+	gulp.src('./package.json')
+		.pipe(bump({version: argv.buildversion}))
+		.pipe(gulp.dest('./'))
+		.pipe(gulp.dest('./packages/theme'));
+});
+
+// Bump up release version
+gulp.task('bump-releaseversion', function(){
+	gulp.src('./package.json')
+		.pipe(bump({version: argv.releaseversion}))
+		.pipe(gulp.dest('./'))
+		.pipe(gulp.dest('./packages/theme'));
+});
+
 // Clean tmp Files
 gulp.task('clean_tmp', function() {
     gulp.src('dev/tmp', {read: false})
@@ -106,10 +123,10 @@ gulp.task('develop', function() {
 
 // Main Task: Build
 gulp.task('build', ['zip_build'], function() {
-    gulp.start('move_zip_build', 'clean_tmp');
+    gulp.start('bump-buildversion', 'move_zip_build', 'clean_tmp');
 });
 
 // Main Task: Release
 gulp.task('release', ['zip_release'], function() {
-    gulp.start('move_zip_release', 'clean_tmp');
+    gulp.start('bump-releaseversion', 'move_zip_release', 'clean_tmp');
 });

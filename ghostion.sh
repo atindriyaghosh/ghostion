@@ -17,7 +17,7 @@ function usage
 while [ "$1" != "" ]; do
     case $1 in
     	-i | --install	)	echo "$(tput setaf 3)[AxianTheme] Installing Necessary Gulp Plugins for Ghostion$(tput sgr 0)"
-							npm install event-stream gulp-ruby-sass gulp-rename gulp-minify-css gulp-concat gulp-uglify gulp-notify gulp-clean gulp-zip --save-dev yargs
+							npm install event-stream gulp-ruby-sass gulp-rename gulp-minify-css gulp-concat gulp-uglify gulp-notify gulp-clean gulp-zip --save-dev yargs gulp-bump
 							echo "$(tput setaf 2)[AxianTheme] Necessary Gulp Plugins for Ghostion are Installed Successfully$(tput sgr 0)"
 							exit
 							;;
